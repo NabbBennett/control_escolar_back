@@ -9,8 +9,11 @@ from control_escolar_desit_api.views import maestros
 from control_escolar_desit_api.views import auth
 from control_escolar_desit_api.views import bootstrap
 from control_escolar_desit_api.views import materias
+from control_escolar_desit_api.views.test_endpoint import TestEndpoint
 
 urlpatterns = [
+    # Test endpoint
+        path('test/', TestEndpoint.as_view()),
     #Create Admin
         path('admin/', users.AdminView.as_view()),  # Endpoint principal para admins
         path('api/admins/create/', users.AdminView.as_view()),
