@@ -10,6 +10,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import Group
 import json
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 class MaestrosAll(generics.CreateAPIView):
     #Esta función es esencial para todo donde se requiera autorización de inicio de sesión (token)
@@ -29,6 +31,10 @@ class MaestrosAll(generics.CreateAPIView):
 class MaestrosView(generics.CreateAPIView):
     # No requerimos autenticación para el registro (POST)
     # pero sí para GET, PUT, DELETE
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
     
     # Obtener maestro por ID
     def get(self, request, *args, **kwargs):

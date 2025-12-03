@@ -9,6 +9,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 class AlumnosAll(generics.CreateAPIView):
     #Verificar si el usuario esta autenticado
@@ -27,6 +29,10 @@ class AlumnosView(generics.CreateAPIView):
             return []
         # Requiere autenticación para otras operaciones (GET, PUT, DELETE)
         return [permissions.IsAuthenticated()]
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
     
     # Obtener alumno por ID
     def get(self, request, *args, **kwargs):
