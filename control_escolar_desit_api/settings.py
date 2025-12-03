@@ -7,7 +7,13 @@ SECRET_KEY = '-_&+lsebec(whhw!%n@ww&1j=4-^j_if9x8$q778+99oz&!ms2'
 
 DEBUG = True  # en desarrollo
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    'nabb.pythonanywhere.com',  
+    '127.0.0.1',              
+    'localhost',               
+    '.pythonanywhere.com',     
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
