@@ -11,9 +11,10 @@ from control_escolar_desit_api.views import bootstrap
 from control_escolar_desit_api.views import materias
 
 urlpatterns = [
-        path('admin/', admin.site.urls),
     #Create Admin
         path('api/admins/create/', users.AdminView.as_view()),
+        path('api/admins/', users.AdminView.as_view()),  # Alias alternativo
+        path('admins/', users.AdminView.as_view()),  # Alias más corto
     #Admin Data
         path('lista-admins/', users.AdminAll.as_view()),
     #Create Alumno
@@ -37,7 +38,9 @@ urlpatterns = [
     #Login
         path('login/', auth.CustomAuthToken.as_view()),
     #Logout
-        path('logout/', auth.Logout.as_view())
+        path('logout/', auth.Logout.as_view()),
+    # Django Admin debe ir al final para no interferir
+        path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
