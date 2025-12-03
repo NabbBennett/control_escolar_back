@@ -20,6 +20,7 @@ class AdminAll(generics.CreateAPIView):
         return Response(lista, 200)
 
 class AdminView(generics.CreateAPIView):
+    serializer_class = AdminSerializer
     #Obtener usuario por ID requiere autenticación
     def get_permissions(self):
         if self.request.method == 'POST':

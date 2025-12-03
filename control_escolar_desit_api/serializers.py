@@ -1,13 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import *
-from .models import Administradores
 
-class AdminView(generics.RetrieveAPIView): 
-    serializer_class = AdminSerializer 
-
-    queryset = Administradores.objects.all()
-    
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     first_name = serializers.CharField(required=True)
