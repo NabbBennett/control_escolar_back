@@ -39,13 +39,36 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Configuración de CSRF
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.vercel.app',
+    'https://nabb.pythonanywhere.com',
+    'http://localhost:4200',
+]
+
 # Configuración de CORS: define orígenes permitidos y quita CORS_ORIGIN_ALLOW_ALL
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
     'https://control-escolar-web-iyjw-9imi7h2r4-nabbbennetts-projects.vercel.app',
 ]
 
+# Permitir todos los orígenes de Vercel
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 ROOT_URLCONF = 'control_escolar_desit_api.urls'
 

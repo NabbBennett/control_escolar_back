@@ -9,6 +9,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
 
 class AdminAll(generics.CreateAPIView):
     #Esta función es esencial para todo donde se requiera autorización de inicio de sesión (token)
@@ -28,6 +31,10 @@ class AdminView(generics.CreateAPIView):
             return []
         # Requiere autenticación para otras operaciones (GET, PUT, DELETE)
         return [permissions.IsAuthenticated()]
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
     
     def get(self, request, *args, **kwargs):
         admin = get_object_or_404(Administradores, id = request.GET.get("id"))
