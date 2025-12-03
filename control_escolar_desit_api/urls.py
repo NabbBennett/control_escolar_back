@@ -13,7 +13,7 @@ from control_escolar_desit_api.views import materias
 urlpatterns = [
         path('admin/', admin.site.urls),
     #Create Admin
-        path('admin/', users.AdminView.as_view()),
+        path('api/admins/create/', users.AdminView.as_view()),
     #Admin Data
         path('lista-admins/', users.AdminAll.as_view()),
     #Create Alumno
