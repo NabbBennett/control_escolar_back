@@ -25,13 +25,13 @@ urlpatterns = [
         path('total-usuarios/', users.TotalUsers.as_view()),
     #Alumno Data
         path('lista-alumnos/', alumnos.AlumnosAll.as_view()),
-        #Create Materia
-            path('materias/', materias.MateriasView.as_view()),
-        #Materia Data
-            path('lista-materias/', materias.MateriasAll.as_view()),
-        #Verificar NRC
-            path('verificar-nrc/', materias.VerificarNRC.as_view()),
-        #Materias registradas por día
+    #Create Materia
+        path('materias/', materias.MateriasView.as_view()),
+    #Materia Data
+        path('lista-materias/', materias.MateriasAll.as_view()),
+    #Verificar NRC
+        path('verificar-nrc/', materias.VerificarNRC.as_view()),
+    #Materias registradas por día
             path('materias-por-dia/', materias.MateriasRegistradasPorDia.as_view()),
     #Login
         path('login/', auth.CustomAuthToken.as_view()),
