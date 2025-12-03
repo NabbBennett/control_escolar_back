@@ -11,6 +11,7 @@ from control_escolar_desit_api.views import bootstrap
 from control_escolar_desit_api.views import materias
 
 urlpatterns = [
+        path('admin/', admin.site.urls),
     #Create Admin
         path('admin/', users.AdminView.as_view()),
     #Admin Data
