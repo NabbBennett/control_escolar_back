@@ -74,9 +74,14 @@ WSGI_APPLICATION = 'control_escolar_desit_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        # ¡DEBE usar os.environ.get() o decouple.config()!
+        'NAME': os.environ.get('DB_DATABASE'),
+        'USER': os.environ.get('DB_USERNAME'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),  # <--- ESTE DEBE SER TU HOST DE PA
+        'PORT': os.environ.get('DB_PORT'),
         'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, "my.cnf"),
-            'charset': 'utf8mb4',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
