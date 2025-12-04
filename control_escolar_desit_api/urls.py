@@ -15,7 +15,7 @@ urlpatterns = [
     # Test endpoint
         path('test/', TestEndpoint.as_view()),
     #Create Admin
-        path('admin/', users.AdminView.as_view()),  # Endpoint principal para admins
+        path('admin/', users.AdminView.as_view()),
         path('api/admins/create/', users.AdminView.as_view()),
         path('api/admins/', users.AdminView.as_view()),
         path('admins/', users.AdminView.as_view()),
@@ -38,7 +38,7 @@ urlpatterns = [
     #Verificar NRC
         path('verificar-nrc/', materias.VerificarNRC.as_view()),
     #Materias registradas por día
-            path('materias-por-dia/', materias.MateriasRegistradasPorDia.as_view()),
+        path('materias-por-dia/', materias.MateriasRegistradasPorDia.as_view()),
     #Login
         path('login/', auth.CustomAuthToken.as_view()),
     #Logout

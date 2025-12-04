@@ -167,9 +167,6 @@ class MateriasView(APIView):
 
 
 class MateriasAll(APIView):
-    
-    #Vista para obtener todas las materias
-
     def get(self, request, *args, **kwargs):
         try:
             search = request.GET.get('search', '').strip()
@@ -187,7 +184,7 @@ class MateriasAll(APIView):
                 page_size = int(page_size)
             except ValueError:
                 page_size = 10
-            page_size = max(1, min(page_size, 100))  # Limitar entre 1 y 100
+            page_size = max(1, min(page_size, 100)) 
 
             queryset = Materias.objects.all()
 
@@ -225,10 +222,7 @@ class MateriasAll(APIView):
                           status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class VerificarNRC(APIView):
-
-    # Verificar si un NRC ya existe
- 
+class VerificarNRC(APIView): 
     def get(self, request, *args, **kwargs):
         try:
             nrc = request.GET.get("nrc", None)
@@ -250,17 +244,17 @@ class MateriasRegistradasPorDia(APIView):
         try:
             # Obtener fecha actual y hace 7 días
             fecha_fin = timezone.now()
-            fecha_inicio = fecha_fin - timedelta(days=6)  # Últimos 7 días incluyendo hoy
+            fecha_inicio = fecha_fin - timedelta(days=6) 
             
-            # Nombres de días en español
+            # Nombres de días 
             dias_semana = {
-                0: 'Lun',  # Lunes
-                1: 'Mar',  # Martes
-                2: 'Mié',  # Miércoles
-                3: 'Jue',  # Jueves
-                4: 'Vie',  # Viernes
-                5: 'Sáb',  # Sábado
-                6: 'Dom'   # Domingo
+                0: 'Lun',  
+                1: 'Mar',  
+                2: 'Mié',  
+                3: 'Jue', 
+                4: 'Vie', 
+                5: 'Sáb', 
+                6: 'Dom' 
             }
             
             # Inicializar contadores para cada día
